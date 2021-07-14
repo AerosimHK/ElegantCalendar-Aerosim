@@ -114,19 +114,30 @@ private struct CircularSelectionView: View {
     @State private var startBounce = false
 
     var body: some View {
+        /*
         Circle()
             //.stroke(Color.primary, lineWidth: 2)
             .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
             .frame(width: radius, height: radius)
-            //.offset(y: 5) // Customised: centre the circle
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))
             .onAppear(perform: startBounceAnimation)
+        */
+        ZStack{
+            Circle()
+                //.stroke(Color.primary, lineWidth: 2)
+                .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
+                .frame(width: CalendarConstants.Monthly.dayWidth,
+                       height: CalendarConstants.Monthly.dayWidth)
+                //.offset(y: 5) // Customised: centre the circle
+                .opacity(startBounce ? 1 : 0)
+                .animation(.interpolatingSpring(stiffness: 150, damping: 10))
+                .onAppear(perform: startBounceAnimation)
+        }.frame(width: CalendarConstants.Monthly.dayWidth+25, height: CalendarConstants.Monthly.dayWidth+25)
     }
 
     private var radius: CGFloat {
-        //startBounce ? CalendarConstants.Monthly.dayWidth + 6 : CalendarConstants.Monthly.dayWidth + 25
-        startBounce ? CalendarConstants.Monthly.dayWidth + 3 : CalendarConstants.Monthly.dayWidth + 3
+        startBounce ? CalendarConstants.Monthly.dayWidth + 6 : CalendarConstants.Monthly.dayWidth + 25
     }
 
     private func startBounceAnimation() {

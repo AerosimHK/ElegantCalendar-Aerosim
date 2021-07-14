@@ -53,7 +53,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                         Circle()
                             .fill(c)
                                 .frame(width: 6, height: 6)
-                                .offset(y: 16)
+                                .offset(y: 20)
                                 .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 0) // For displaying color in dots
                                 .opacity(isDaySelectableAndInRange ? 1 : 0) // Hide dot when date is not in range
                     }
@@ -127,8 +127,7 @@ private struct CircularSelectionView: View {
             Circle()
                 //.stroke(Color.primary, lineWidth: 2)
                 .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
-                .frame(width: CalendarConstants.Monthly.dayWidth,
-                       height: CalendarConstants.Monthly.dayWidth)
+                .frame(width: radius, height: radius)
                 //.offset(y: 5) // Customised: centre the circle
                 .opacity(startBounce ? 1 : 0)
                 .animation(.interpolatingSpring(stiffness: 150, damping: 10))

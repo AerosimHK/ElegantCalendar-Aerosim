@@ -137,7 +137,7 @@ private struct CircularSelectionView: View {
 
     private var radius: CGFloat {
         //startBounce ? CalendarConstants.Monthly.dayWidth + 6 : CalendarConstants.Monthly.dayWidth + 25
-        startBounce ? CalendarConstants.Monthly.dayWidth : CalendarConstants.Monthly.dayWidth + 8
+        startBounce ? CalendarConstants.Monthly.dayWidth : CalendarConstants.Monthly.dayWidth + 4
     }
 
     private func startBounceAnimation() {

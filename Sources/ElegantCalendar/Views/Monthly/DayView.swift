@@ -37,6 +37,9 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
     }
 
     var body: some View {
+        
+        let dotColor : [Color] = datasource?.calendar(dotColorForDate: day) ?? [Color.clear]
+        
         Text(numericDay)
             .font(.footnote)
             .foregroundColor(foregroundColor)
@@ -44,6 +47,19 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
             .background(backgroundColor)
             .clipShape(Circle())
             .opacity(opacity)
+            .overlay(
+                HStack{
+                    ForEach (dotColor, id: \.self){ c in
+                        Circle()
+                            .fill(c)
+                                .frame(width: 6, height: 6)
+                                .offset(y: 16)
+                                .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 0) // For displaying color in dots
+                                .opacity(isDaySelectableAndInRange ? 1 : 0) // Hide dot when date is not in range
+                    }
+                }
+                
+            )  // Customised: show dot when there is a class
             .overlay(isSelected ? CircularSelectionView() : nil)
             .onTapGesture(perform: notifyManager)
     }
@@ -54,7 +70,8 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
 
     private var foregroundColor: Color {
         if isDayToday {
-            return theme.primary
+            //return theme.primary
+            return Color.white  // Customised: white text for when date = today
         } else {
             return .primary
         }
@@ -65,8 +82,12 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
             if isDayToday {
                 Color.primary
             } else if isDaySelectableAndInRange {
+                /*
+                // Original
                 theme.primary
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
+                */
+                Color.clear  // Customised: background color
             } else {
                 Color.clear
             }
@@ -94,8 +115,10 @@ private struct CircularSelectionView: View {
 
     var body: some View {
         Circle()
-            .stroke(Color.primary, lineWidth: 2)
+            //.stroke(Color.primary, lineWidth: 2)
+            .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
             .frame(width: radius, height: radius)
+            .offset(y: 5) // Customised: centre the circle
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))
             .onAppear(perform: startBounceAnimation)

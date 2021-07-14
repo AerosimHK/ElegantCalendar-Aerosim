@@ -10,6 +10,7 @@ public protocol MonthlyCalendarDataSource {
     func calendar(canSelectDate date: Date) -> Bool
     func calendar(viewForSelectedDate date: Date, dimensions size: CGSize) -> AnyView
 
+    func calendar(dotColorForDate date : Date) -> [Color]
 }
 
 
@@ -23,6 +24,7 @@ public extension MonthlyCalendarDataSource {
         EmptyView().erased
     }
 
+    func calendar(dotColorForDate date : Date) -> [Color] { [Color.clear] }
 }
 
 // TODO: Depending on future design choices, this may need some functions and properties

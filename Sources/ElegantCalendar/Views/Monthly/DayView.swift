@@ -123,7 +123,7 @@ private struct CircularSelectionView: View {
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))
             .onAppear(perform: startBounceAnimation)
         */
-        ZStack{
+        VStack{
             Circle()
                 //.stroke(Color.primary, lineWidth: 2)
                 .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
@@ -133,7 +133,7 @@ private struct CircularSelectionView: View {
                 .opacity(startBounce ? 1 : 0)
                 .animation(.interpolatingSpring(stiffness: 150, damping: 10))
                 .onAppear(perform: startBounceAnimation)
-        }.frame(width: CalendarConstants.Monthly.dayWidth+25, height: CalendarConstants.Monthly.dayWidth+25)
+        }.frame(width: CalendarConstants.Monthly.dayWidth+50, height: CalendarConstants.Monthly.dayWidth+50)
     }
 
     private var radius: CGFloat {

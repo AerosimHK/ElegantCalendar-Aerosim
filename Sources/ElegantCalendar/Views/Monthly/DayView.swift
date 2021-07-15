@@ -49,7 +49,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
             .clipShape(Circle())
             .opacity(opacity)
             .overlay(
-                HStack{
+                HStack (spacing: 3){
                     ForEach (dotColor, id: \.self){ c in
                         Circle()
                             .fill(c)
@@ -131,14 +131,13 @@ private struct CircularSelectionView: View {
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))
             .onAppear(perform: startBounceAnimation)
         */
-        VStack{
             Circle()
                 .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
                 .frame(width: radius, height: radius)
                 .opacity(startBounce ? 1 : 0)
                 .animation(.interpolatingSpring(stiffness: 150, damping: 10))
                 .onAppear(perform: startBounceAnimation)
-        }.frame(width: CalendarConstants.Monthly.dayWidth+50, height: CalendarConstants.Monthly.dayWidth+60)
+
     }
 
     private var radius: CGFloat {

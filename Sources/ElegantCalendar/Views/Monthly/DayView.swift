@@ -72,6 +72,8 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
         if isDayToday {
             //return theme.primary
             return Color.white  // Customised: white text for when date = today
+        } else if isSelected {
+            return Color("highlight")
         } else {
             return .primary
         }
@@ -89,7 +91,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 */
                 // Customised: background color
                 if isSelected {
-                    Color("overlay")
+                    Color("highlight").opacity(0.4)
                 } else {
                     Color.clear
                 }

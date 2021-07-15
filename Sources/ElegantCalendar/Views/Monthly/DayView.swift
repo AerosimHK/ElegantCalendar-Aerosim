@@ -53,7 +53,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                         Circle()
                             .fill(c)
                                 .frame(width: 6, height: 6)
-                                .offset(y: 25)
+                                .offset(y: 20)
                                 .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 0) // For displaying color in dots
                                 .opacity(isDaySelectableAndInRange ? 1 : 0) // Hide dot when date is not in range
                     }
@@ -87,7 +87,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 theme.primary
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
                 */
-                Color.clear  // Customised: background color
+                Color("overlay")  // Customised: background color
             } else {
                 Color.clear
             }
@@ -130,12 +130,12 @@ private struct CircularSelectionView: View {
                 .opacity(startBounce ? 1 : 0)
                 .animation(.interpolatingSpring(stiffness: 150, damping: 10))
                 .onAppear(perform: startBounceAnimation)
-        }.frame(width: CalendarConstants.Monthly.dayWidth+50, height: CalendarConstants.Monthly.dayWidth+50)
+        }.frame(width: CalendarConstants.Monthly.dayWidth+50, height: CalendarConstants.Monthly.dayWidth+60)
     }
 
     private var radius: CGFloat {
-        //startBounce ? CalendarConstants.Monthly.dayWidth + 6 : CalendarConstants.Monthly.dayWidth + 25
-        startBounce ? CalendarConstants.Monthly.dayWidth - 6 : CalendarConstants.Monthly.dayWidth - 25
+        startBounce ? CalendarConstants.Monthly.dayWidth + 6 : CalendarConstants.Monthly.dayWidth + 25
+        //startBounce ? CalendarConstants.Monthly.dayWidth - 6 : CalendarConstants.Monthly.dayWidth - 25
     }
 
     private func startBounceAnimation() {

@@ -87,9 +87,12 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 theme.primary
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
                 */
-                Color.clear  // Customised: background color
-            } else if isSelected{
-                Color("overlay")
+                // Customised: background color
+                if isSelected {
+                    Color("overlay")
+                } else {
+                    Color.clear
+                }
             } else {
                 Color.clear
             }

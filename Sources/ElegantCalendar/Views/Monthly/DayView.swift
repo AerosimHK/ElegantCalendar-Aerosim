@@ -53,7 +53,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                         Circle()
                             .fill(c)
                                 .frame(width: 6, height: 6)
-                                .offset(y: 20)
+                                .offset(y: 15)
                                 .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 0) // For displaying color in dots
                                 .opacity(isDaySelectableAndInRange ? 1 : 0) // Hide dot when date is not in range
                     }
@@ -87,7 +87,9 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 theme.primary
                     .opacity(datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1)
                 */
-                Color("overlay")  // Customised: background color
+                Color.clear  // Customised: background color
+            } else if isSelected{
+                Color("overlay")
             } else {
                 Color.clear
             }

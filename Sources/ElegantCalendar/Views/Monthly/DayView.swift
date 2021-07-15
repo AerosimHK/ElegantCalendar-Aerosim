@@ -91,8 +91,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 */
                 // Customised: background color
                 if isSelected {
-                    //Color("highlight").opacity(0.4)
-                    Color(.sRGB, red: 248, green: 245, blue: 250, opacity: 1)
+                    Color("overlay")
                 } else {
                     Color.clear
                 }

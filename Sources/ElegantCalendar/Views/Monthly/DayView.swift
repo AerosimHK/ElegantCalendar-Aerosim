@@ -42,7 +42,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
         
         Text(numericDay)
             .font(.footnote)
-            .fontWeight(isSelected ? .medium : nil)
+            .fontWeight(isSelected ? .bold : nil)
             .foregroundColor(foregroundColor)
             .frame(width: CalendarConstants.Monthly.dayWidth, height: CalendarConstants.Monthly.dayWidth)
             .background(backgroundColor)

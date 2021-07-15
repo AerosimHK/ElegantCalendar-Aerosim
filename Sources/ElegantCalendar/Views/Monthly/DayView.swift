@@ -59,6 +59,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                                 .opacity(isDaySelectableAndInRange ? 1 : 0) // Hide dot when date is not in range
                     }
                 }
+                .opacity(isSelected ? 0 : 1)    // Hide dots when date is selected 
                 
             )  // Customised: show dot when there is a class
             .overlay(isSelected ? CircularSelectionView() : nil)

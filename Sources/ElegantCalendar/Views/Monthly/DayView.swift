@@ -75,7 +75,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
             //return theme.primary
             return Color.white  // Customised: white text for when date = today
         } else if isSelected {
-            return Color("highlight")
+            return Color("Primary")
         } else {
             return .primary
         }
@@ -93,7 +93,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
                 */
                 // Customised: background color
                 if isSelected {
-                    Color("overlay")
+                    Color("Secondary")
                 } else {
                     Color.clear
                 }
@@ -133,7 +133,7 @@ private struct CircularSelectionView: View {
             .onAppear(perform: startBounceAnimation)
         */
             Circle()
-                .stroke(Color("highlight"), lineWidth: 2) // Customised: overlay circle when selected
+                .stroke(Color("Primary"), lineWidth: 2) // Customised: overlay circle when selected
                 .frame(width: radius, height: radius)
                 .opacity(startBounce ? 1 : 0)
                 .animation(.interpolatingSpring(stiffness: 150, damping: 10))
